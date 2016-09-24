@@ -10,7 +10,12 @@ class SessionsController < ApplicationController
     if user && user.password == (params[:session][:password])
       # Log the user in and redirect to the user's show page.
       log_in user
-      redirect_to  '/member/home'
+      if user.role == 'member'
+        redirect_to  '/member/home'
+      else
+        redirect_to user
+      end
+
     else
       # Create an error message.
       flash[:danger] = 'Invalid email/password combination' # Not quite right!
@@ -22,8 +27,4 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
-
-
-
-
 end

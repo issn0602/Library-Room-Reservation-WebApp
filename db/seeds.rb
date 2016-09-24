@@ -12,9 +12,9 @@
     Room.create( number: '2011', size: '6', building: 'hill')
     Room.create( number: '3011', size: '12', building: 'hill')
     
-    User.create( name: 'Vivek', email: 'vivek@gmail.com', password: 'a1b2')
-    User.create( name: 'Shankar', email: 'shankar@gmail.com', password: 'a2b1')
-    User.create( name: 'Prathamesh', email: 'prathamesh@gmail.com', password: 'a3b1')
+    User.create( name: 'Vivek', email: 'vivek@gmail.com', password: 'a1b2', role: 'user')
+    User.create( name: 'Shankar', email: 'shankar@gmail.com', password: 'a2b1', role: 'admin')
+    User.create( name: 'Prathamesh', email: 'prathamesh@gmail.com', password: 'a3b1', role: 'user')
     
     Reservations.create( booking_date: '2016-09-24', start_time: '17', end_time: '18', status: 'booked')
     Reservations.create( booking_date: '2016-09-24', start_time: '13', end_time: '14', status: 'booked')

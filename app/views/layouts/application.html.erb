@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome | NCSU Libraries</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/core.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+  <center><img src="assets/logo.gif" style="width:100px; height:100px;" /></h3></center>
+  <%= yield %>
+  <%= debug(params) if Rails.env.development? %>
+</div>
+
+</body>
+</html>

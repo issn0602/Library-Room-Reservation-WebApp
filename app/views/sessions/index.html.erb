@@ -1,0 +1,111 @@
+<html>
+
+  <body >
+    <form method="POST" action="/logins/validate">
+    <div id="main-content">
+      <center><img src="../assets/logo.gif" style="width:100px; height:100px;" /></h3></center><br>
+      <center><%= flash[:notice] if flash[:notice]%></center>
+        <center><h7><strong>Email Id:</strong>&nbsp;&nbsp;&nbsp; <input type="text" name="username" id="username"></h7></center><br>
+        <center><h7><strong>Password:</strong>&nbsp;&nbsp; <input type="text" name="password" id="password"><h7></center><br>
+        <center><button type="submit">Login</button></center><br><br>
+
+        <center><h7><a href="#" onclick="toggleViewSignup()">Not a Member? Signup</a></h7></center>
+    </div>
+    </form>
+    <form method="POST" action="/logins/signup">
+    <div id="signup-content">
+        <center><img src="../assets/logo.gif" style="width:100px; height:100px;" /></center><br>
+        <center><h7><strong>Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" id="name"></h7></center><br>
+        <center><h7><strong>Email Id:</strong>&nbsp;&nbsp;&nbsp; <input type="text" name="username_signup" id="username_signup"></h7></center><br>
+        <center><h7><strong>Password:</strong>&nbsp;&nbsp; <input type="password" name="password_signup" id="password_signup"><h7></center><br>
+        <center><h7><strong>Confirm:</strong>&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="confirm_signup" id="confirm_signup"><h7></center><br>
+        <center><button type="submit">Sign Up</button></center><br><br>
+        <%= flash[:notice] if flash[:notice]%>
+        <center><h7><a href="#" onclick="toggleViewLogin()">Library Member? Login</a></h7></center>
+    </div>
+    </form>
+  </body>
+</html>
+
+<script type="text/javascript">
+function toggleViewSignup(){
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('signup-content').style.display = 'block';
+}
+function toggleViewLogin(){
+  document.getElementById('main-content').style.display = 'block';
+  document.getElementById('signup-content').style.display = 'none';
+}
+
+
+</script>
+
+
+
+<style>
+#main-content{
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  float: left;
+}
+
+#signup-content{
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  float: left;
+  display: none;
+}
+body{
+  background-image: url("../assets/mainwall.jpg");
+}
+h3{
+  font-family: 'Open Sans Light',Helvetica,Arial,sans-serif;
+  font-weight: 200;
+  letter-spacing: -1px;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 0px;
+  line-height: 2rem;
+  color: #CB4335;
+  margin-bottom: 20px;
+}
+
+h7{
+  font-size: 1.2rem;
+}
+
+input[type="text"] {
+    width: 30%;
+    display: inline-block;
+    border: 1px solid maroon;
+    border-radius: 2px;
+    font-family: 'Courier';
+    font-size: 1rem;
+    padding: 2px 2px 2px 5px;
+}
+input[type="password"] {
+    width: 30%;
+    display: inline-block;
+    border: 1px solid maroon;
+    border-radius: 2px;
+    font-family: 'Courier';
+    font-size: 1rem;
+    padding: 2px 2px 2px 2px;
+}
+
+button{
+    width: 30%;
+    background-color: #CB4335;
+    color: white;
+    font-size: 1.2rem;
+    padding: 2px 2px 2px 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+</style>

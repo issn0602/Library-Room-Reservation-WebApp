@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  booking_date: 2016-09-22
+  start_time: MyString
+  end_time: MyString
+  status: MyString
+
+two:
+  booking_date: 2016-09-22
+  start_time: MyString
+  end_time: MyString
+  status: MyString

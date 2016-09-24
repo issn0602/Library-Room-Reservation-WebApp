@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  size: MyString
+  booking_date: 2016-09-19
+  time_slot: MyString
+  status: MyString
+
+two:
+  name: MyString
+  size: MyString
+  booking_date: 2016-09-19
+  time_slot: MyString
+  status: MyString

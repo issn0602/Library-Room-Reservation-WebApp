@@ -27,6 +27,14 @@
     <%= f.label :status %><br>
     <%= f.text_field :status %>
   </div>
+    <div class="field">
+      <%= f.label :user %><br />
+      <%= select("reservation", "user_id", User.find(:all).collect{ |c| [ c.name, c.id] }) %>
+    </div>
+    <div class="field">
+      <%= f.label :room %><br />
+      <%= select("reservation", "room_id", Room.find(:all).collect{ |c| [ c.number, c.id] }) %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

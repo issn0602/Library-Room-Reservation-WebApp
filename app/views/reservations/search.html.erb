@@ -1,37 +1,44 @@
 
 
 <%= form_for(Reservation.new, url:'/reserve') do |f| %>
-      
-<h1>Search Criteria</h1>
+    <div class="row" style="background-color:transparent;">
+      <div class="col-md-6 col-md-offset-3" style="margin-left:40%;margin-right:40%;float:left;width:20%;background-color:transoarent;">      
+<center><h1>Search Results</h1></center><br>
+
+  <font size="3"><strong>Booking Date</strong></font><br>
+    <%= f.text_field :booking_date, value: params[:booking_date] %><br><br>
+
+        <font size="3"><strong>Start Time</strong></font><br>
+    <%= f.text_field :start_time, value: params[:start] %><br><br>
+
+        <font size="3"><strong>End Time</strong></font><br>
+    <%= f.text_field :end_time, value: params[:end] %><br><br>
+
+        <font size="3"><strong>Size</strong></font><br>
+    <%= f.text_field :size, value: params[:size] %><br><br><br>
 
 
 
-  <p></p>  <%= f.label :BookingDate %>
-    <%= f.text_field :booking_date, value: params[:booking_date] %></p>
+<center><font size="3"><strong> Available Rooms </strong></font></center><br>
 
-  <p></p>  <%= f.label :StartTime %>
-    <%= f.text_field :start_time, value: params[:start] %></p>
-
-   <p></p> <%= f.label :EndTime %>
-    <%= f.text_field :end_time, value: params[:end] %></p>
-
-   <p></p> <%= f.label :Size %>
-    <%= f.text_field :size, value: params[:size] %></p>
-
-    <p><%= f.text_field :room_id %></p>
-
-
-<h1> Available Rooms (Select from the drop down)</h1>
-
-    <select name="room" >
+   <center> <select name="room" >
       <% @rooms.each do |room| %>
           <option value="<%= room.id %>"><%= room.number %></option>
       <% end %>
-    </select>
+    </select></center><br>
 
-
-<%=  f.submit %>
-
+<div class="actions">
+<center><%=  f.submit %></center>
+    </div>
+<br><br>
+        <center><%= link_to 'Back', '/member/home' %></center>
 
 <% end %>
+</div></div>
 
+<style>
+select{
+  width:80%;
+}
+
+</style>

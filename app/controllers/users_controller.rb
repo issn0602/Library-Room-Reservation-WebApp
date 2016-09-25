@@ -27,11 +27,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.role = 'user'
 
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to NCSU Libraries!"
-      redirect_to @user
+      redirect_to @user, notice: @user.name + ', your account has been created. :-)'
     else
       render 'new'
     end

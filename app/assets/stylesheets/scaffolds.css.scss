@@ -1,148 +1,154 @@
-body {
-    background-color: white;
-    color: #333;
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px; }
-
 p, ol, ul, td {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px; }
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+table th, table td {
+  color: #999999;
+  border: 1px solid #f0f0f0;
+  padding: 12px 35px;
+  border-collapse: collapse; }
+
+body {
+  background-color: white;
+  color: #333333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  background-image: url('http://www.engr.ncsu.edu/engrhome/images/engr-freebies/wallpapers/1280x800/desktop_004.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
 pre {
-    background-color: transparent;
-    padding: 10px;
-    font-size: 11px; }
+  background-color: transparent;
+  padding: 10px;
+  font-size: 11px; }
 
 a {
-    color: #000; }
-  a:visited {
-      color: #666; }
-  a:hover {
-      color: #fff;
-      background-color: #000; }
+  color: black; }
+a:visited {
+  color: #666666; }
+a:hover {
+  color: white;
+  background-color: black; }
 
-div.field, div.actions {
-    margin-bottom: 10px; }
+div.field {
+  margin-bottom: 10px; }
+div.actions {
+  margin-bottom: 10px; }
 
 #notice {
-    color: green; }
+  color: green; }
 
 .field_with_errors {
-    padding: 2px;
-    background-color: red;
-    display: table; }
+  padding: 2px;
+  background-color: red;
+  display: table; }
 
 #error_explanation {
-    width: 450px;
-    border: 2px solid red;
-    padding: 7px;
-    padding-bottom: 0;
-    margin-bottom: 20px;
-    background-color: #f0f0f0; }
-  #error_explanation h2 {
-      text-align: left;
-      font-weight: bold;
-      padding: 5px 5px 5px 15px;
-      font-size: 12px;
-      margin: -7px;
-      margin-bottom: 0px;
-      background-color: #c00;
-      color: #fff; }
-  #error_explanation ul li {
-      font-size: 12px;
-      list-style: square; }
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0;
+  background-color: #cc0000;
+  color: white; }
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square; }
 
 input[type="text"] {
-    width: 100%;
-    display: inline-block;
-    border: 1px solid maroon;
-    border-radius: 5px;
-    font-family: 'Courier';
-    font-size: 1rem;
-    padding: 5px 5px 5px 5px;
-    height: 15px;
-    padding-left: 10px; }
+  width: 100%;
+  display: inline-block;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  font-family: Courier;
+  font-size: 1rem;
+  padding: 5px;
+  height: 15px;
+  padding-left: 10px; }
 
 input[type="number"] {
-    width: 40%;
-    display: inline-block;
-    border: 1px solid maroon;
-    border-radius: 5px;
-    font-family: 'Courier';
-    font-size: 1rem;
-    padding: 5px 5px 5px 5px;
-    height: 15px;
-    padding-left: 10px; }
+  width: 40%;
+  display: inline-block;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  font-family: Courier;
+  font-size: 1rem;
+  padding: 5px;
+  height: 15px;
+  padding-left: 10px; }
 
 input[type="email"] {
-    width: 100%;
-    display: inline-block;
-    border: 1px solid maroon;
-    border-radius: 5px;
-    font-family: 'Courier';
-    font-size: 1rem;
-    padding: 5px 5px 5px 5px;
-    height: 15px;
-    padding-left: 10px; }
+  width: 100%;
+  display: inline-block;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  font-family: Courier;
+  font-size: 1rem;
+  padding: 5px;
+  height: 15px;
+  padding-left: 10px; }
 
 input[type="password"] {
-    width: 100%;
-    display: inline-block;
-    border: 1px solid maroon;
-    border-radius: 5px;
-    font-family: 'Courier';
-    font-size: 1rem;
-    padding: 5px 5px 5px 5px;
-    height: 15px;
-    padding-left: 10px; }
+  width: 100%;
+  display: inline-block;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  font-family: Courier;
+  font-size: 1rem;
+  padding: 5px;
+  height: 15px;
+  padding-left: 10px; }
 
 input[type="submit"] {
-    width: 40%;
-    background-color: #fff;
-    color: black;
-    font-size: 1.2rem;
-    padding: 2px 2px 2px 2px;
-    border: 1px solid black;
-    border-radius: 5px; }
-
+  width: 40%;
+  background-color: white;
+  color: black;
+  font-size: 1.2rem;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 5px; }
 input[type="submit"]:hover {
-    background-color: #cb4335;
-    color: white; }
+  background-color: #cb4335;
+  color: white; }
 
 table {
-    font-family: 'Arial';
-    margin: 25px auto;
-    border-collapse: collapse;
-    border: 1px solid #eee;
-    border-bottom: 2px solid #00cccc;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05); }
-  table tr:hover {
-      background: #f4f4f4; }
-    table tr:hover td {
-        color: #555; }
-  table th, table td {
-      color: #999;
-      border: 1px solid #eee;
-      padding: 12px 35px;
-      border-collapse: collapse; }
-  table th {
-      background: #cb4335;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 12px; }
-    table th.last {
-        border-right: none; }
+  font-family: Arial;
+  margin: 25px auto;
+  border-collapse: collapse;
+  border: 1px solid #f0f0f0;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.05), 0 20px 20px rgba(0, 0, 0, 0.05), 0 30px 20px rgba(0, 0, 0, 0.05); }
+table th {
+  background: #cb4335;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px; }
+table th.last {
+  border-right: none; }
+table tr:hover {
+  background: #f4f4f4; }
+table tr:hover td {
+  color: #555555; }
 
 select {
-    border: 2px solid maroon;
-    border-radius: 5px;
-    font-family: 'Courier';
-    font-size: 1rem;
-    padding: 5px 5px 5px 5px;
-    height: 35px;
-    padding-left: 10px; }
+  border: 2px solid maroon;
+  border-radius: 5px;
+  font-family: Courier;
+  font-size: 1rem;
+  padding: 5px;
+  height: 35px;
+  padding-left: 10px; }
 
 .actions input[type="submit"] {
-    width: 80%; }
+  width: 80%; }

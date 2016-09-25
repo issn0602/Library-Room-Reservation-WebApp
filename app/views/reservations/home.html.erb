@@ -18,49 +18,47 @@
 
 <div id="main-content">
   <center><button id="reserveButton" onclick="toggleViewBookings1()">Reserve a Room</button>
-    <button id="viewButton" style="background-color:transparent;color:black;" onclick="toggleViewBookings2()">View Bookings</button>
+    <button id="viewButton" style="background-color:transparent;color:black;" onclick="toggleViewBookings2()">My Reservations</button>
   </center>
-  <hr>
+  <br><br>
 
   <div id="reserve">
     <br>
     <form method='get' action = '/search'>
-      <center><h7><strong>Building Name:</strong> <select name="building" id="building">
+      <div class="row" style="background-color:transparent;">
+        <div class="col-md-6 col-md-offset-3" style="margin-left:20%;margin-right:20%;float:left;width:60%;background-color:transparent;">
+      <font size="3"><strong>Building Name:</strong></font><br> <select name="building" id="building">
         <option value="hunt">James B. Hunt Jr. Library</option>
         <option value="hill">D. H. Hill Library</option>
       </select>
-        <br><br>
-        <center><h7><strong>Booking Date:</strong> <input type="date" id="txtDate" name="booking_date"/></h7></center>
+        <br><br><br>
+        <font size="3"><strong>Booking Date:</strong></font><br> <input type="date" id="txtDate" name="booking_date"/>
+          <br><br><br>
+        <font size="3"><strong>Size of the Room:</strong></font><br> <select name="size" id="size">
+          <option value="4">4 Chairs (Small)</option>
+          <option value="6">6 Chairs (Medium)</option>
+          <option value="8">8 Chairs (Large)</option>
+        </select><br><br>
         <br>
-        <center><h7><strong>Size of the Room:</strong> <select name="size" id="size">
-          <option value="4">4 Chairs</option>
-          <option value="6">6 Chairs</option>
-          <option value="8">8 Chairs</option>
-        </select>
+        <font size="3"><strong>Start Time: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Time:</strong></font><br>
 
-        </h7></center>
-        <br>
-        <center><h7><strong>Start Time:</strong> <input type="number" name="start" id="start" min="0" max="23" style="width:10%;">
-          &nbsp;&nbsp;<h7><strong>End Time:</strong> <input type="number" name="end" id="end" min="1" max="24" style="width:10%">
+          <input type="number" name="start" id="start" min="0" max="23" style="width:30%;">
+          &nbsp;&nbsp;<h7><strong></strong> <input type="number" name="end" id="end" min="1" max="24" style="width:30%">
 
-          &nbsp;&nbsp;
-        <br>
-        <center><h7><strong>Available Rooms:</strong> <select name="roomno" id="roomno">
-
-        </select>
-          <br><br>
+<br><br><br>
           <div>
-            <center><button>Search</button><button type="submit">Reserve</button></center>
+            <button style="width:50%;">Search</button>
           </div>
     </form>
   </div>
+  </div>
+</div>
 
   <div id="viewbookings">
     <br>
-    <center><h7><strong>Current Bookings</strong></h7></center>
-    <br><br>
+    <center><font size="3"><strong>Current Reservations</strong></font></center>
     <div class="row" style="background-color:transparent;">
-      <div class="col-md-6 col-md-offset-3" style="margin-left:10%;margin-right:10%;float:left;width:80%;text-align:center;background-color:transoarent;">
+      <div class="col-md-6 col-md-offset-3" style="margin-left:5%;margin-right:5%;float:left;width:90%;text-align:center;background-color:transparent;">
         <table>
           <thead>
           <tr>
@@ -79,16 +77,16 @@
                 <td><%= reservation.start_time %></td>
                 <td><%= reservation.end_time %></td>
                 <td><%= Room.find(reservation.room_id).number %></td>
-                <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Release', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
           <% end %>
           </tbody>
         </table>
       </div>
     </div>
-    <center><h7><strong>Past Bookings</strong></h7></center>
+    <center><font size="3"><strong>Past Reservations</strong></font></center>
     <div class="row" style="background-color:transparent;">
-      <div class="col-md-6 col-md-offset-3" style="margin-left:10%;margin-right:10%;float:left;width:80%;text-align:center;background-color:transoarent;">
+      <div class="col-md-6 col-md-offset-3" style="margin-left:5%;margin-right:5%;float:left;width:90%;text-align:center;background-color:transparent;">
         <table>
           <thead>
           <tr>
@@ -96,7 +94,6 @@
             <th>Start time</th>
             <th>End time</th>
             <th>Room</th>
-            <th></th>
           </tr>
           </thead>
 
@@ -107,7 +104,6 @@
                 <td><%= reservation.start_time %></td>
                 <td><%= reservation.end_time %></td>
                 <td><%= Room.find(reservation.room_id).number %></td>
-                <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
           <% end %>
           </tbody>
@@ -159,15 +155,18 @@
   }
 
   #signup-content{
-    margin-top: 10%;
+    margin-top: 0%;
     margin-left: 25%;
     margin-right: 25%;
     width: 50%;
     float: left;
     display: none;
   }
+
   body{
-    background-image: url("../assets/mainwall.jpg");
+    background-image: url('http://www.engr.ncsu.edu/engrhome/images/engr-freebies/wallpapers/1280x800/desktop_004.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   h3{
     font-family: 'Open Sans Light',Helvetica,Arial,sans-serif;
@@ -182,38 +181,64 @@
   }
 
   h7{
-    font-size: 1.2rem;
+    font-size: 13px;
   }
 
   input[type="text"] {
-    width: 30%;
+    width: 100%;
     display: inline-block;
     border: 1px solid maroon;
-    border-radius: 2px;
-    font-family: 'Courier';
+    border-radius: 5px;
+    font-family: Courier;
     font-size: 1rem;
-    padding: 2px 2px 2px 5px;
-  }
+    padding: 5px;
+    height: 15px;
+    padding-left: 10px; }
+
 
   input[type="date"] {
-    width: 30%;
+    width: 40%;
     display: inline-block;
     border: 1px solid maroon;
-    border-radius: 2px;
-    font-family: 'Courier';
+    border-radius: 5px;
+    font-family: Courier;
     font-size: 1rem;
-    padding: 2px 2px 2px 5px;
-  }
+    padding: 5px;
+    height: 15px;
+    padding-left: 10px; }
+
+  input[type="number"] {
+    width: 50%;
+    display: inline-block;
+    border: 1px solid maroon;
+    border-radius: 5px;
+    font-family: Courier;
+    font-size: 1rem;
+    padding: 5px;
+    height: 15px;
+    padding-left: 10px; }
+
+  input[type="email"] {
+    width: 100%;
+    display: inline-block;
+    border: 1px solid maroon;
+    border-radius: 5px;
+    font-family: Courier;
+    font-size: 1rem;
+    padding: 5px;
+    height: 15px;
+    padding-left: 10px; }
 
   input[type="password"] {
-    width: 30%;
+    width: 100%;
     display: inline-block;
     border: 1px solid maroon;
-    border-radius: 2px;
-    font-family: 'Courier';
+    border-radius: 5px;
+    font-family: Courier;
     font-size: 1rem;
-    padding: 2px 2px 2px 2px;
-  }
+    padding: 5px;
+    height: 15px;
+    padding-left: 10px; }
 
   button{
     width: 30%;
@@ -271,6 +296,16 @@
     border-width: 1px;
     border-color: #CB4335;
   }
+
+
+  select {
+    border: 2px solid maroon;
+    border-radius: 5px;
+    font-family: Courier;
+    font-size: 1rem;
+    padding: 5px;
+    height: 35px;
+    padding-left: 10px; }
 
 </style>
 

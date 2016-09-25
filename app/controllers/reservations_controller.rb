@@ -13,19 +13,24 @@ class ReservationsController < ApplicationController
   end
 
   def search
-
     @rooms = Room.all
+
 =begin
-   @rooms = Room.all.select {}.each do |x|
-     Reservation.all.where.not.select {|y| y.building ==params[building] and y.size ==params[size] and y.status =='booked' and y.booking_date ==params[booking_date] and y.start_time == params[start_time] and y.end_time == params[end_time]}
+   @rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}.each do |x|
+     Reservation.all.select {|y| x.id == y.room_id  and y.status !='booked' and y.booking_date ==params[:booking_date] and y.start_time == params[:start_time] and y.end_time == params[:end_time]}
       end
 =end
+
     end
 
 
   def reserve
-    puts 'reserve'
-    puts params[:p1]
+
+    #plz check if still available
+    @reservation = params[:reservation]
+    @reservation.user_id = current_user.id
+    @reservation.save
+
   end
 
   # GET /reservations/new
@@ -52,7 +57,39 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+    puts 'create'
+    #@room = Reservation.new(reservation_params)
+    require 'date'
+
+    new_params= {}
+    x = params[:reservation][:booking_date].split("/").to_a
+    dateField = Date.new(x[2].to_i,x[0].to_i,x[1].to_i)
+    new_params[:booking_date] = dateField
+    new_params[:start_time] = params[:reservation][:start_time]
+    new_params[:end_time] = params[:reservation][:end_time]
+    new_params[:status] = 'booked'
+    new_params[:room_id] = params[:room]
+    new_params[:user_id] = current_user.id
+
+    puts new_params.to_s
+    @room = Reservation.new(new_params)
+
+    respond_to do |format|
+      if @room.save
+        format.html { redirect_to @room, notice: 'Reservation was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @room }
+      else
+        puts 'errors'
+        puts @room.errors.full_messages
+        format.html { render action: 'new' }
+        format.json { render json: @room.errors, status: :unprocessable_entity }
+      end
+    end
+    end
+
+=begin
+    @reservation = Reservation.new(params[:reservation])
+    @reservation.user_id = current_user.id
 
     respond_to do |format|
       if @reservation.save
@@ -63,7 +100,8 @@ class ReservationsController < ApplicationController
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end
-  end
+=end
+
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
@@ -104,6 +142,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-     params.require(:reservation).permit(:start_time, :end_time,:building,:size)
+     params.require(:reservation).permit(:booking_date,:start_time,:end_time,:room_id)
     end
 end

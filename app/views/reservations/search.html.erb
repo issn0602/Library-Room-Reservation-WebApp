@@ -1,23 +1,37 @@
-<h1>Listing Rooms</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Number</th>
-    <th>Building</th>
-    <th>Size</th>
-    <th></th>
-  </tr>
-  </thead>
 
-  <tbody>
-  <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.number %></td>
-        <td><%= room.building %></td>
-        <td><%= room.size %></td>
-        <td><%= link_to 'Show', room %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= form_for(Reservation.new, url:'/reserve') do |f| %>
+      
+<h1>Search Criteria</h1>
+
+
+
+  <p></p>  <%= f.label :BookingDate %>
+    <%= f.text_field :booking_date, value: params[:booking_date] %></p>
+
+  <p></p>  <%= f.label :StartTime %>
+    <%= f.text_field :start_time, value: params[:start] %></p>
+
+   <p></p> <%= f.label :EndTime %>
+    <%= f.text_field :end_time, value: params[:end] %></p>
+
+   <p></p> <%= f.label :Size %>
+    <%= f.text_field :size, value: params[:size] %></p>
+
+    <p><%= f.text_field :room_id %></p>
+
+
+<h1> Available Rooms (Select from the drop down)</h1>
+
+    <select name="room" >
+      <% @rooms.each do |room| %>
+          <option value="<%= room.id %>"><%= room.number %></option>
+      <% end %>
+    </select>
+
+
+<%=  f.submit %>
+
+
+<% end %>
+

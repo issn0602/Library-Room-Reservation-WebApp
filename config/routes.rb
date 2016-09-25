@@ -17,13 +17,10 @@ LibraryRoomReservation::Application.routes.draw do
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
 
-  #get 'login/index' => 'logins#index'
-  #post 'logins/validate' => 'logins#validate'
-  #post 'logins/signup' => 'logins#signup'
   get 'member/home'  => 'reservations#home'
   get '/search'  => 'reservations#search'
-  post '/search' => 'reservations#search'
-  get '/reserve' => 'reservations#reserve'
+  post '/reserve' => 'reservations#create'
+  #get '/reserve' => 'reservations#reserve'
 
   #root 'reservations#new'
   root 'sessions#new'

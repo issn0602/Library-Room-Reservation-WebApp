@@ -1,10 +1,19 @@
 <html>
 <head>
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <script>
+  $(function() {
+    $( "#txtDate" ).datepicker();
+  });
+</script>
 </head>
 <body>
 <div id="header">
   <h3>Welcome <%= current_user.name %></h3>
-  <h8 style="text-align: right;"><a href="/users">Edit Profile</a> | <a href="/logout">Logout</a></h8>
+  <h8 style="text-align: right;"> <a href= "/users/<%= current_user.id %>/edit/" >Edit Profile</a> | <a href="/logout">Logout</a></h8>
 </div>
 
 <div id="main-content">
@@ -15,61 +24,35 @@
 
   <div id="reserve">
     <br>
-    <form method='post' action = '/member/reserve'>
-    <center><h7><strong>Building Name:</strong> <select name="building" id="building">
-      <option value="hunt">James B. Hunt Jr. Library</option>
-      <option value="hill">D. H. Hill Library</option>
-    </select>
-      <br><br>
-      <center><h7><strong>Booking Date:</strong> <input type="date" id="txtDate" /></h7></center>
-      <br>
-      <center><h7><strong>Size of the Room:</strong> <select name="size" id="size">
-        <option value="4">4 Chairs</option>
-        <option value="6">6 Chairs</option>
-        <option value="8">8 Chairs</option>
-      </select>
-
-      </h7></center>
-      <br>
-      <center><h7><strong>Start Time:</strong> <select name="start" id="start">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-        &nbsp;&nbsp;<h7><strong>End Time:</strong> <select name="end" id="end">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-        &nbsp;&nbsp;<select name="ampm"><option value="am">am</option><option value="pm">pm</option></select></h7></h7></center>
-
-      <br>
-      <center><h7><strong>Available Rooms:</strong> <select name="roomno" id="roomno">
-
+    <form method='get' action = '/search'>
+      <center><h7><strong>Building Name:</strong> <select name="building" id="building">
+        <option value="hunt">James B. Hunt Jr. Library</option>
+        <option value="hill">D. H. Hill Library</option>
       </select>
         <br><br>
-        <div>
-        <center><button>Search</button><button type="submit">Reserve</button></center>
-        </div>
-      </form>
+        <center><h7><strong>Booking Date:</strong> <input type="date" id="txtDate" name="booking_date"/></h7></center>
+        <br>
+        <center><h7><strong>Size of the Room:</strong> <select name="size" id="size">
+          <option value="4">4 Chairs</option>
+          <option value="6">6 Chairs</option>
+          <option value="8">8 Chairs</option>
+        </select>
+
+        </h7></center>
+        <br>
+        <center><h7><strong>Start Time:</strong> <input type="number" name="start" id="start" min="0" max="23" style="width:10%;">
+          &nbsp;&nbsp;<h7><strong>End Time:</strong> <input type="number" name="end" id="end" min="1" max="24" style="width:10%">
+
+          &nbsp;&nbsp;
+        <br>
+        <center><h7><strong>Available Rooms:</strong> <select name="roomno" id="roomno">
+
+        </select>
+          <br><br>
+          <div>
+            <center><button>Search</button><button type="submit">Reserve</button></center>
+          </div>
+    </form>
   </div>
 
   <div id="viewbookings">

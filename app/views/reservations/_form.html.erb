@@ -1,41 +1,60 @@
-<%= form_for(@reservation) do |f| %>
-  <% if @reservation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+<%= form_for(@reservation, url: '/search') do |f| %>
+      <% if @reservation.errors.any? %>
+            <div id="error_explanation">
+        <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
 
-      <ul>
-      <% @reservation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+        </ul>
+      </div>
+          <% end %>
+      
+      <div class="row" style="background-color:transparent;">
+    <div class="col-md-6 col-md-offset-3" style="margin-left:40%;margin-right:40%;float:left;width:20%;background-color:transoarent;">
+  <h1>New Reservation</h1><br><br>
 
-  <div class="field">
-    <%= f.label :booking_date %><br>
-    <%= f.date_select :booking_date %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.text_field :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-    <div class="field">
-      <%= f.label :user %><br />
-      <%= select("reservation", "user_id", User.find(:all).collect{ |c| [ c.name, c.id] }) %>
-    </div>
-    <div class="field">
-      <%= f.label :room %><br />
-      <%= select("reservation", "room_id", Room.find(:all).collect{ |c| [ c.number, c.id] }) %>
-    </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <strong><font size="3"><%= f.label :booking_date %></font></strong><br>
+  <%= f.date_select :booking_date %><br><br>
+
+
+    <strong><font size="3"><%= f.label :Building %><br></font></strong><br>
+    <select name="building"><option value="James B. Hunt Jr. Library">James B. Hunt Jr. Library</option>
+                            <option value="D. H. Hill Library">D. H. Hill Library</option></select><br><br>
+    <strong><font size="3"><%= f.label :Size %><br></font></strong><br>
+    <select name="size"><option value="4 Chairs (Small)">4 Chairs (Small)</option>
+                        <option value="6 Chairs (Medium)">6 Chairs (Medium)</option>
+                        <option value="8 Chairs (Medium)">8 Chairs (Lrage)</option>
+                        </select><br><br>
+                        
+      <strong><font size="3"><%= f.label :start_time %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :end_time %></font></strong>
+      <br><br>
+      <%= f.number_field :start_time, min: 0, max: 23 %>&nbsp;&nbsp;<%= f.number_field :end_time , min: 1, max: 24 %><br><br>
+    
+      <div class="actions" style="text-align:center;">
+      <%= f.submit :Search %>
+      </div>
+      
+      
+      
+      <table>
+    <thead>
+    <tr>
+        <th>Room No</th>
+        <th></th>
+      </tr>
+  </thead>
+
+    
+</table>
+      
+     
+  <br>
+      
+    <center><font size="3"><%= link_to 'Back', reservations_path %></font></center>
+
+      </div>
+</div>
+      
 <% end %>

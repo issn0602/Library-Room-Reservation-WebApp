@@ -12,6 +12,22 @@ class ReservationsController < ApplicationController
   def show
   end
 
+  def search
+
+    @rooms = Room.all
+=begin
+   @rooms = Room.all.select {}.each do |x|
+     Reservation.all.where.not.select {|y| y.building ==params[building] and y.size ==params[size] and y.status =='booked' and y.booking_date ==params[booking_date] and y.start_time == params[start_time] and y.end_time == params[end_time]}
+      end
+=end
+    end
+
+
+  def reserve
+    puts 'reserve'
+    puts params[:p1]
+  end
+
   # GET /reservations/new
   def new
     @reservation = Reservation.new
@@ -25,6 +41,13 @@ class ReservationsController < ApplicationController
     @currentReservations = Reservation.all.select {|y| y.booking_date >= Date.today and y.user_id == current_user.id and y.status == 'booked'}
     @pastReservations = Reservation.all.select {|y| y.booking_date <= Date.today and y.user_id == current_user.id}
   end
+
+=begin
+  def home
+    @currentReservations = Reservation.all.select { |y| y.user_id == current_user.id and y.status == 'booked' and y.booking_date > Date.today } + Reservation.all.select { |y| y.user_id == current_user.id and y.status == 'booked' and y.booking_date == Date.today and y.end_time > Time.now.hour.to_s() }
+    @pastReservations = Reservation.all.select { |y| y.user_id == current_user.id and y.booking_date < Date.today } + Reservation.all.select {|y| y.user_id == current_user.id and y.booking_date == Date.today and y.start_time < Time.now.hour.to_s() and y.end_time <= Time.now.hour.to_s() }
+  end
+=end
 
   # POST /reservations
   # POST /reservations.json
@@ -81,6 +104,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:booking_date, :start_time, :end_time, :status,:room_id,:user_id)
+     params.require(:reservation).permit(:start_time, :end_time,:building,:size)
     end
 end

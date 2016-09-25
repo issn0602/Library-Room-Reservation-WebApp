@@ -1,0 +1,23 @@
+<h1>Listing Rooms</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Number</th>
+    <th>Building</th>
+    <th>Size</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.number %></td>
+        <td><%= room.building %></td>
+        <td><%= room.size %></td>
+        <td><%= link_to 'Show', room %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -21,9 +21,12 @@ LibraryRoomReservation::Application.routes.draw do
   #post 'logins/validate' => 'logins#validate'
   #post 'logins/signup' => 'logins#signup'
   get 'member/home'  => 'reservations#home'
+  get '/search'  => 'reservations#search'
+  post '/search' => 'reservations#search'
+  get '/reserve' => 'reservations#reserve'
 
+  #root 'reservations#new'
   root 'sessions#new'
-  #root 'reservations#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

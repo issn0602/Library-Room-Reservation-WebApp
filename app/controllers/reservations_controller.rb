@@ -21,6 +21,10 @@ class ReservationsController < ApplicationController
   def edit
   end
 
+  def home
+
+  end
+
   # POST /reservations
   # POST /reservations.json
   def create

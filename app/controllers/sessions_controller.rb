@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user && user.password == (params[:session][:password])
       # Log the user in and redirect to the user's show page.
       log_in user
-      if user.role == 'member'
+      if user.role == 'user'
         redirect_to  '/member/home'
       else
         redirect_to user

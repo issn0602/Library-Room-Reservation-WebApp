@@ -22,7 +22,8 @@ class ReservationsController < ApplicationController
   end
 
   def home
-
+    @currentReservations = Reservation.all.select {|y| y.booking_date >= Date.today and y.user_id == current_user.id and y.status == 'booked'}
+    @pastReservations = Reservation.all.select {|y| y.booking_date <= Date.today and y.user_id == current_user.id}
   end
 
   # POST /reservations

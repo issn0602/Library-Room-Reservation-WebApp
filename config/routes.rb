@@ -15,16 +15,15 @@ LibraryRoomReservation::Application.routes.draw do
   post  '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get '/logout',  to: 'sessions#destroy'
 
   #get 'login/index' => 'logins#index'
   #post 'logins/validate' => 'logins#validate'
   #post 'logins/signup' => 'logins#signup'
-  get 'member/home'  => 'welcome#home'
-  get 'member/'  => 'welcome#home'
+  get 'member/home'  => 'reservations#home'
 
   root 'sessions#new'
-
+  #root 'reservations#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

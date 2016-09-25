@@ -4,11 +4,10 @@
 <body>
 <div id="header">
   <h3>Welcome <%= current_user.name %></h3>
-  <h8 style="text-align: right;"><a href="/users">Edit Profile</a> | <a href="/reservations">Logout</a></h8>
+  <h8 style="text-align: right;"><a href="/users">Edit Profile</a> | <a href="/logout">Logout</a></h8>
 </div>
 
 <div id="main-content">
-  <center><img src="../assets/logo.gif" style="width:100px; height:100px;" /></h3></center>
   <center><button id="reserveButton" onclick="toggleViewBookings1()">Reserve a Room</button>
     <button id="viewButton" style="background-color:transparent;color:black;" onclick="toggleViewBookings2()">View Bookings</button>
   </center>
@@ -77,7 +76,61 @@
     <br>
     <center><h7><strong>Current Bookings</strong></h7></center>
     <br><br>
+    <div class="row" style="background-color:transparent;">
+      <div class="col-md-6 col-md-offset-3" style="margin-left:10%;margin-right:10%;float:left;width:80%;text-align:center;background-color:transoarent;">
+        <table>
+          <thead>
+          <tr>
+            <th>Booking date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Room</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @currentReservations.each do |reservation| %>
+              <tr>
+                <td><%= reservation.booking_date %></td>
+                <td><%= reservation.start_time %></td>
+                <td><%= reservation.end_time %></td>
+                <td><%= Room.find(reservation.room_id).number %></td>
+                <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <center><h7><strong>Past Bookings</strong></h7></center>
+    <div class="row" style="background-color:transparent;">
+      <div class="col-md-6 col-md-offset-3" style="margin-left:10%;margin-right:10%;float:left;width:80%;text-align:center;background-color:transoarent;">
+        <table>
+          <thead>
+          <tr>
+            <th>Booking date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Room</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @pastReservations.each do |reservation| %>
+              <tr>
+                <td><%= reservation.booking_date %></td>
+                <td><%= reservation.start_time %></td>
+                <td><%= reservation.end_time %></td>
+                <td><%= Room.find(reservation.room_id).number %></td>
+                <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 </div>

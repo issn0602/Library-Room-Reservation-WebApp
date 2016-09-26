@@ -2,7 +2,7 @@ README
 
 ECE/CSC 517 Program 1 - Library Room Reservation Portal, a Ruby on Rails Web Application.
 
-PLEASE use CHROME/MOZILLA while reviewing our application. 
+PLEASE use Mozilla Firefox while reviewing our application. 
 
 Application Link: https://ncsu-library.herokuapp.com/
 

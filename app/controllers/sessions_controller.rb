@@ -12,8 +12,9 @@ class SessionsController < ApplicationController
       log_in user
       if user.role == 'user'
         redirect_to  '/member/home'
-      else
-        redirect_to user
+      else if user.role == 'admin' or user.role == 'sadmin'
+              redirect_to  '/admin/home'
+           end
       end
 
     else

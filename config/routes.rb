@@ -13,11 +13,15 @@ LibraryRoomReservation::Application.routes.draw do
   # You can have the root of your site routed with "root"
   get  '/signup',  to: 'users#new'
   post  '/signup',  to: 'users#create'
+  get '/new_admin', to: 'users#new_admin'
+  post  '/new_admin',  to: 'users#create_admin'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
 
   get 'member/home'  => 'reservations#home'
+  get 'admin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
   post '/reserve' => 'reservations#create'
   #get '/reserve' => 'reservations#reserve'

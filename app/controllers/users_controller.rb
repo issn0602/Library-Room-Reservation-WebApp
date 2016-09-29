@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :index, :destroy, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :set_user, only:[:edit]
+  #before_action :correct_user,only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -19,8 +19,27 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def new_admin
+    @user = User.new
+  end
+
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
+    puts 'edit user'
+  end
+
+  # POST /users
+  # POST /users.json
+  def create_admin
+    @user = User.new(user_params)
+    @user.role = 'admin'
+
+    if @user.save
+      redirect_to @user, notice: 'account for ' + @user.name + ' has been created. :-)'
+    else
+      render 'new_admin'
+    end
   end
 
   # POST /users

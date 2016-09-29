@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :building %><br>
-    <%= f.text_field :building %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.text_field :size %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :building %><br>
+      <%= f.select :building, ['James B. Hunt Jr. Library', 'D. H. Hill Library'] %>
+    </div>
+    <div class="field">
+      <%= f.label :number %><br>
+      <%= f.text_field :number %>
+    </div>
+    <div class="field">
+      <%= f.label :size %><br>
+      <%= f.select :size,['4 Chairs (Small)','6 Chairs (Medium)','8 Chairs (Large)'] %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

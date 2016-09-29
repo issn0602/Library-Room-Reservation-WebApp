@@ -82,7 +82,8 @@
     <center><font size="3"><strong>Current Reservations</strong></font></center>
     <div class="row" style="background-color:transparent;">
       <div class="col-md-6 col-md-offset-3" style="margin-left:5%;margin-right:5%;float:left;width:90%;text-align:center;background-color:transparent;">
-        <table>
+        <div class="table-responsive">
+        <table class="table table-responsive table-hover">
           <thead>
           <tr>
             <th>Booking date</th>
@@ -107,10 +108,12 @@
         </table>
       </div>
     </div>
+      </div>
     <center><font size="3"><strong>Past Reservations</strong></font></center>
     <div class="row" style="background-color:transparent;">
       <div class="col-md-6 col-md-offset-3" style="margin-left:5%;margin-right:5%;float:left;width:90%;text-align:center;background-color:transparent;">
-        <table>
+        <div class="">
+        <table class="table table-responsive table-hover">
           <thead>
           <tr>
             <th>Booking date</th>
@@ -134,7 +137,7 @@
       </div>
     </div>
   </div>
-
+</div>
 </div>
 
 
@@ -190,6 +193,13 @@
     /*background-image: url('http://www.engr.ncsu.edu/engrhome/images/engr-freebies/wallpapers/1280x800/desktop_004.jpg');*/
     background-repeat: no-repeat;
     background-attachment: fixed;
+  }
+
+  .tr{
+    text-align:center;
+  }
+  .td{
+    text-align: center;
   }
   /*h3{
     font-family: 'Open Sans Light',Helvetica,Arial,sans-serif;

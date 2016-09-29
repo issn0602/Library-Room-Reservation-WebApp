@@ -11,8 +11,8 @@ LibraryRoomReservation::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  get  '/signup',  to: 'users#new'
-  post  '/signup',  to: 'users#create'
+  get  '/signup',  to: 'users#new_user'
+  post  '/signup',  to: 'users#create_user'
   get '/new_admin', to: 'users#new_admin'
   post  '/new_admin',  to: 'users#create_admin'
 
@@ -20,7 +20,10 @@ LibraryRoomReservation::Application.routes.draw do
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
 
-  get 'member/home'  => 'reservations#home'
+  get '/profile/:id', to: 'users#edit_profile'
+  patch '/profile/:id', to: 'users#update_profile'
+
+  get 'user/home'  => 'reservations#home'
   get 'admin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
   post '/reserve' => 'reservations#create'

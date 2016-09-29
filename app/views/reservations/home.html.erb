@@ -12,7 +12,7 @@
     <% end %>
 
     <%= menu_group pull: :right do %>
-        <%= menu_item "Edit Profile", "/users/"+ current_user.id.to_s + "/edit/" %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
         <%= menu_item "Log Out", "/logout" %>
     <% end %>
 

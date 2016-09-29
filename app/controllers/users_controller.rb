@@ -15,18 +15,34 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def new
+  def new_user
     @user = User.new
   end
 
-  def new_admin
-    @user = User.new
+  # POST /users
+  # POST /users.json
+  def create_user
+    @user = User.new(user_params)
+    @user.role = 'user'
+
+    if @user.save
+      log_in @user
+      redirect_to @user, notice: @user.name + ', your account has been created. :-)'
+    else
+      render 'new_user'
+    end
   end
 
   # GET /users/1/edit
   def edit
+  end
+
+  def edit_profile
     @user = User.find(params[:id])
-    puts 'edit user'
+  end
+
+  def new_admin
+    @user = User.new
   end
 
   # POST /users
@@ -42,20 +58,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(user_params)
-    @user.role = 'user'
-
-    if @user.save
-      log_in @user
-      redirect_to @user, notice: @user.name + ', your account has been created. :-)'
-    else
-      render 'new'
-    end
-  end
-
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -66,6 +68,18 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'edit'
+    end
+  end
+
+  def update_profile
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      # Handle a successful update.
+      flash[:success] = "Profile updated"
+      redirect_to '/' + @user.role + '/home'
+      #redirect_to '/'+ @user.role +'/home'
+    else
+      render 'edit_profile'
     end
   end
 

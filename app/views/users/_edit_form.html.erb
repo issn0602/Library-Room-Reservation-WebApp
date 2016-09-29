@@ -1,7 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user,url:'/profile/'+@user.id.to_s) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -36,6 +36,6 @@
 
 <br><br>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back','/'+@user.role+'/home' %>
 </div>
 </div>

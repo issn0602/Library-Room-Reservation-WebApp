@@ -1,6 +1,4 @@
-
-<center><h1>Welcome</h1></center><br><br>
-<%= form_for(@user, url: signup_path) do |f| %>
+<%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -12,25 +10,18 @@
       </ul>
     </div>
   <% end %>
-<div class="row" style="background-color:transparent;">
-  <div class="col-md-6 col-md-offset-3" style="margin-left:40%;margin-right:40%;float:left;width:20%;background-color:transoarent;">
-  
+
     <font size="3"><strong><%= f.label :name %></font></strong><br>
     <%= f.text_field :name %><br><br>
 
-  
+
     <font size="3"><strong><%= f.label :email %></strong></font><br>
     <%= f.text_field :email %><br><br>
-    
-  
-    <font size="3"><Strong><%= f.label :password %></strong></font><br>
-    <%= f.password_field :password %><br><br>
 
-    <font size="3"><strong><%= f.label :password_confirmation, "Confirmation" %></strong></font><br>
-    <%= f.password_field :password_confirmation %><br><br><br>
+    <font size="3"><strong><%= f.label :role  %></strong></font><br>
+    <%= f.select :role, ['admin','user'] %><br><br>
 
-
-    <center><%= f.submit "Sign Up", class: "btn btn-primary" %></center><br>
-  <% end %>
-  <p><center><font size="3"><%= link_to "Existing Member? Login", login_path %></font></center></p>
-  </div></div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

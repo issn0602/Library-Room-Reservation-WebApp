@@ -1,9 +1,10 @@
 <% provide(:title, "Log in") %>
-<center><h1>Welcome</h1></center>
+<center><img href="\login" src="..\assets\logo.gif" style="width:100px;height:100px;"\></center><br>
+<center><h1>Log In</h1></center>
 
 <div class="row" style="background-color:transparent;">
   <div class="col-md-6 col-md-offset-3" style="margin-left:40%;margin-right:40%;float:left;width:20%;background-color:transoarent;">
-    <%= form_for(:session, url: login_path) do |f| %><br><br>
+    <%= form_for(:session, url: login_path) do |f| %><br>
 
        <font size="3"><strong><%= f.label :email %></strong></font><br>
         <%= f.email_field :email%><br><br>
@@ -14,6 +15,6 @@
         <center><%= f.submit "Log In", class: "btn btn-primary" %></center><br>
     <% end %>
 
-    <p><center><font size="3"><%= link_to "New to NCSU? Sign up now!", signup_path %></font></center></p>
+    <p><center><font size="3"><%= link_to "New to NCSU? Sign up!", signup_path %></font></center></p>
   </div>
 </div>

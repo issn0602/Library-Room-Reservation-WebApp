@@ -17,6 +17,10 @@ class AdminsController < ApplicationController
     @admin = Admin.new
   end
 
+  def home
+    @reservation = Reservation.all.select {|y| y.booking_date == Date.today and y.status == 'booked'}
+  end
+
   # GET /admins/1/edit
   def edit
   end

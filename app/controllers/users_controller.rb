@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
-      redirect_to @user, notice: @user.name + ', your account has been created. :-)'
+      redirect_to '/user/home', notice: @user.name + ', your account has been created. :-)'
     else
       render 'new_user'
     end
@@ -87,8 +87,6 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
   end
 
   private

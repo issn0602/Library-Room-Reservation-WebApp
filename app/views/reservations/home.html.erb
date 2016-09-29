@@ -1,3 +1,25 @@
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", root_path %>
+        <%= menu_divider %>
+        <%= drop_down "Products" do %>
+            <%= menu_item "Things you can't afford" %>
+            <%= menu_item "Things that won't suit you anyway" %>
+            <%= menu_item "Things you're not even cool enough to buy anyway" %>
+        <% end %>
+        <%= menu_item "About Us" %>
+        <%= menu_item "Contact" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/users/"+ current_user.id.to_s + "/edit/" %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+    <% end %>
+
+
+
 <html>
 <head>
   <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
@@ -13,12 +35,13 @@
 <body>
 <div id="header">
   <h3>Welcome <%= current_user.name %></h3>
-  <h8 style="text-align: right;"> <a href= "/users/<%= current_user.id %>/edit/" >Edit Profile</a> | <a href="/logout">Logout</a></h8>
 </div>
 
 <div id="main-content">
-  <center><button id="reserveButton" onclick="toggleViewBookings1()">Reserve a Room</button>
-    <button id="viewButton" style="background-color:transparent;color:black;" onclick="toggleViewBookings2()">My Reservations</button>
+  <center>
+    <button id="viewButton" class="btn btn-primary" onclick="toggleViewBookings2()">My Reservations</button>
+    <button id="reserveButton" class="btn btn-primary" onclick="toggleViewBookings1()" style="background-color:transparent;color:black;" >Reserve a Room</button>
+
   </center>
   <br><br>
 
@@ -47,7 +70,7 @@
 
 <br><br><br>
           <div>
-            <button style="width:50%;">Search</button>
+            <button class="btn btn-primary" >Search</button>
           </div>
     </form>
   </div>
@@ -124,7 +147,7 @@
   {
     document.getElementById('viewbookings').style.display = 'none';
     document.getElementById('reserve').style.display = 'block';
-    document.getElementById('reserveButton').style.backgroundColor = '#CB4335';
+    document.getElementById('reserveButton').style.backgroundColor = '#428bca';
     document.getElementById('reserveButton').style.color = 'white';
     document.getElementById('viewButton').style.backgroundColor = 'transparent';
     document.getElementById('viewButton').style.color = 'black';
@@ -136,7 +159,7 @@
     document.getElementById('reserve').style.display = 'none';
     document.getElementById('reserveButton').style.backgroundColor = 'transparent';
     document.getElementById('reserveButton').style.color = 'black';
-    document.getElementById('viewButton').style.backgroundColor = '#CB4335';
+    document.getElementById('viewButton').style.backgroundColor = '#428bca';
     document.getElementById('viewButton').style.color = 'white';
   }
 
@@ -164,11 +187,11 @@
   }
 
   body{
-    background-image: url('http://www.engr.ncsu.edu/engrhome/images/engr-freebies/wallpapers/1280x800/desktop_004.jpg');
+    /*background-image: url('http://www.engr.ncsu.edu/engrhome/images/engr-freebies/wallpapers/1280x800/desktop_004.jpg');*/
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
-  h3{
+  /*h3{
     font-family: 'Open Sans Light',Helvetica,Arial,sans-serif;
     font-weight: 200;
     letter-spacing: -1px;
@@ -276,16 +299,16 @@
     border-radius: 2px;
     font-family: 'Courier';
     font-size: 1rem;
-  }
+  }*/
 
   #reserve{
-    display: block;
-  }
-
-  #viewbookings{
     display: none;
   }
 
+  #viewbookings{
+    display: block;
+  }
+/*
   hr {
     display: block;
     margin-top: 0.7em;
@@ -305,7 +328,7 @@
     font-size: 1rem;
     padding: 5px;
     height: 35px;
-    padding-left: 10px; }
+    padding-left: 10px; }*/
 
 </style>
 

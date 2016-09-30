@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+   @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i}
   end
 
   # GET /rooms/new

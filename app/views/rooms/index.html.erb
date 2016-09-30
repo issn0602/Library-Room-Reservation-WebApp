@@ -1,6 +1,31 @@
-<h1>Listing rooms</h1>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
-<table class="table table-bordered table-striped">
+
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/admin/home' %>
+        <%= menu_item "Manage Users/Admins" , "/users/" %>
+        <%= menu_item "Manage Rooms", "/rooms/" %>
+        <%= menu_item "Search Rooms" %>
+        <%= menu_item "My Bookings" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+<br><br>
+
+<h2>Manage Rooms</h2><br>
+
+
+<table class="table table-bordered table-striped displays" id="roomtable">
   <thead>
     <tr>
       <th>Building</th>
@@ -29,3 +54,9 @@
 <br>
 
 <%= link_to 'New Room', new_room_path %>
+
+<script>
+  $(document).ready(function() {
+    $('#roomtable').dataTable();
+  });
+</script>

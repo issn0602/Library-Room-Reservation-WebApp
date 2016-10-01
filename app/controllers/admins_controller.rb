@@ -58,7 +58,6 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    begin
     @admin.destroy
     respond_to do |format|
       format.html { redirect_to admins_url }

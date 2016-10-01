@@ -18,7 +18,7 @@ class AdminsController < ApplicationController
   end
 
   def home
-    @reservation = Reservation.all.select {|y| y.booking_date == Date.today and y.status == 'booked'}
+   @reservation=Reservation.all.select {|y| y.booking_date == Date.today and y.status == 'booked'}
   end
 
   # GET /admins/1/edit
@@ -58,6 +58,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
+    begin
     @admin.destroy
     respond_to do |format|
       format.html { redirect_to admins_url }

@@ -28,7 +28,7 @@
         <td><%= reservation.user_id %></td>
         <td><%= link_to 'Show', reservation %></td>
         <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Release','/reservations/release/'+reservation.id.to_s  %></td>
       </tr>
     <% end %>
   </tbody>

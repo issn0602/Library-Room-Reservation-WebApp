@@ -26,7 +26,7 @@ crossorigin="anonymous"></script>
 <div class="row" style="background-color:transparent;">
 
   <div class="col-md-6 col-md-offset-3" style="margin-top: 20px; margin-left:10%;margin-right:10%;float:left;width:80%;text-align:center;background-color:transparent;">
-    <h1>Reservations for <%=Date.today()%></h1>
+    <h1>Today's Reservations <%=Date.today()%></h1>
         <table class="table table-bordered table-striped" id="table">
           <thead>
           <tr>
@@ -68,7 +68,7 @@ crossorigin="anonymous"></script>
               <td><%= Room.find(res.room_id).building %></td>
               <td><%= Room.find(res.room_id).number %></td>
               <td><%=if(res.start_time.to_i >= 0 and res.end_time.to_i <= 2) then User.find(res.user_id).name end%></td>
-                    <td><%=if(res.start_time.to_i >= 0 and res.end_time.to_i <= 3) then  User.find(res.user_id).name end%></td>
+              <td><%=if(res.start_time.to_i >= 1 and res.end_time.to_i <= 3) then  User.find(res.user_id).name end%></td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                           <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>

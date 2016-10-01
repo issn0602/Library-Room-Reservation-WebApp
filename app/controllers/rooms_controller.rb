@@ -55,11 +55,16 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
+=begin
     @room.destroy
     respond_to do |format|
       format.html { redirect_to rooms_url }
       format.json { head :no_content }
     end
+=end
+    @room = Room.find(params[:id])
+    @room.destroy!
+    redirect_to '/rooms/', :notice => "Room has been deleted!"
   end
 
   private

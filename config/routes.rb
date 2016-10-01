@@ -30,6 +30,9 @@ LibraryRoomReservation::Application.routes.draw do
   #get '/reserve' => 'reservations#reserve'
   get 'reservation/release/:id' => 'reservations#release'
 
+  get 'rooms/destroy/:id' => 'rooms#destroy'
+  get 'users/destroy/:id' => 'users#destroy'
+
   #root 'reservations#new'
   root 'sessions#new'
 

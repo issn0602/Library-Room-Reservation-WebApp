@@ -28,6 +28,7 @@ LibraryRoomReservation::Application.routes.draw do
   get '/search'  => 'reservations#search'
   post '/reserve' => 'reservations#create'
   #get '/reserve' => 'reservations#reserve'
+  get 'reservation/release/:id' => 'reservations#release'
 
   #root 'reservations#new'
   root 'sessions#new'

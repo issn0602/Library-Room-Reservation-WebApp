@@ -26,10 +26,10 @@
 
 <p>
   <strong>Room:</strong>
-  <%= @reservation.room_id %>
+  <%= Room.find(@reservation.room_id).number %>
 </p>
 <br>
-    <p style="color:white;!"><center><%= link_to 'Back', '/member/home' %></center></p>
+    <p style="color:white;!"><center><%= link_to 'Back', '/'+User.find(@reservation.user_id).role + '/home' %></center></p>
 
 
   </div>

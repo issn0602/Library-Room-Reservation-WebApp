@@ -30,6 +30,16 @@ class ReservationsController < ApplicationController
     @reservation = params[:reservation]
     @reservation.user_id = current_user.id
     @reservation.save
+    redirect_to '/'+ User.find(current_user.id).role.to_s + '/home'
+  end
+
+  def release
+    puts 'Release  called'
+    @reservation = Reservation.find(params[:id])
+    @reservation.status= 'released'
+
+    @reservation.save
+    redirect_to @reservation
 
   end
 
@@ -72,17 +82,17 @@ class ReservationsController < ApplicationController
     new_params[:user_id] = current_user.id
 
     puts new_params.to_s
-    @room = Reservation.new(new_params)
+    @reservation = Reservation.new(new_params)
 
     respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: 'Reservation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @room }
+      if @reservation.save
+        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @reservation }
       else
         puts 'errors'
-        puts @room.errors.full_messages
+        puts @reservation.errors.full_messages
         format.html { render action: 'new' }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end
     end
@@ -144,4 +154,5 @@ class ReservationsController < ApplicationController
     def reservation_params
      params.require(:reservation).permit(:booking_date,:start_time,:end_time,:room_id)
     end
+
 end

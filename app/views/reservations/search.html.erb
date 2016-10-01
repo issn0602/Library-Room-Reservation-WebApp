@@ -31,7 +31,7 @@
 <center><%=  f.submit %></center>
     </div>
 <br><br>
-        <center><%= link_to 'Back', '/member/home' %></center>
+        <center><%= link_to 'Back',  '/'+User.find(current_user.id).role + '/home' %></center>
 
 <% end %>
 </div></div>

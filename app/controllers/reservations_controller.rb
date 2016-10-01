@@ -14,13 +14,12 @@ class ReservationsController < ApplicationController
 
   def search
     @rooms = Room.all
-
+    #@rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}
 =begin
    @rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}.each do |x|
      Reservation.all.select {|y| x.id == y.room_id  and y.status !='booked' and y.booking_date ==params[:booking_date] and y.start_time == params[:start_time] and y.end_time == params[:end_time]}
       end
 =end
-
     end
 
 
@@ -34,7 +33,7 @@ class ReservationsController < ApplicationController
   end
 
   def release
-    puts 'Release  called'
+    puts 'Release called'
     @reservation = Reservation.find(params[:id])
     @reservation.status= 'released'
 

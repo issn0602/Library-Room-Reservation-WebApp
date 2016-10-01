@@ -1,44 +1,60 @@
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/user/home' %>
+        <%= menu_item "All Rooms", 'all_rooms'  %>
+        <%= menu_item "Reserve a Room","search_room_form" %>
+        <%= menu_item "My Reservations",'my_reservations' %>
+    <% end %>
 
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+<br><br>
+
+<h2> Search Results</h2>
 
 <%= form_for(Reservation.new, url:'/reserve') do |f| %>
     <div class="row" style="background-color:transparent;">
-      <div class="col-md-6 col-md-offset-3" style="margin-left:40%;margin-right:40%;float:left;width:20%;background-color:transoarent;">      
-<center><h1>Search Results</h1></center><br>
+      <div class="col-md-6 col-md-offset-3" style="margin-left:20%;margin-right:20%;float:left;width:60%;background-color:transparent;">      
 
-  <font size="3"><strong>Booking Date</strong></font><br>
-    <%= f.text_field :booking_date, value: params[:booking_date] %><br><br>
+        <font size="3"><strong>Building Name:</strong></font><br>
+        <%= f.text_field :building, value: params[:building] %>
 
-        <font size="3"><strong>Start Time</strong></font><br>
-    <%= f.text_field :start_time, value: params[:start] %><br><br>
+        <br><br><br>
+        <font size="3"><strong>Booking Date:</strong></font><br>
+        <%= f.text_field :booking_date, value: params[:booking_date] %>
 
-        <font size="3"><strong>End Time</strong></font><br>
-    <%= f.text_field :end_time, value: params[:end] %><br><br>
+        <br><br><br>
+        <font size="3"><strong>Start Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Time:</strong></font><br>
+        <%= f.text_field :start_time, value: params[:start] %><%= f.text_field :end_time, value: params[:end] %>
 
-        <font size="3"><strong>Size</strong></font><br>
-    <%= f.text_field :size, value: params[:size] %><br><br><br>
+        <br><br><br>
+        <font size="3"><strong>Size of the Room:</strong></font><br>
+        <%= f.text_field :size, value: params[:size] %><br><br><br>
 
 
+<font size="3"><strong> Available Rooms </strong></font><br>
 
-<center><font size="3"><strong> Available Rooms </strong></font></center><br>
-
-   <center> <select name="room" >
+        <select name="room" >
       <% @rooms.each do |room| %>
           <option value="<%= room.id %>"><%= room.number %></option>
       <% end %>
-    </select></center><br>
-
-<div class="actions">
-<center><%=  f.submit %></center>
-    </div>
+    </select><br>
 <br><br>
-        <center><%= link_to 'Back',  '/'+User.find(current_user.id).role + '/home' %></center>
+
+<%=  f.submit 'Reserve', class: 'btn btn-primary' %>
+<br><br>
+        <%= link_to 'Back',  '/'+User.find(current_user.id).role + '/home' %>
 
 <% end %>
 </div></div>
 
 <style>
 select{
-  width:80%;
+  width:30%;
 }
 
 </style>

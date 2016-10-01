@@ -1,0 +1,65 @@
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  
+  <script>
+  $(function() {
+    $( "#txtDate" ).datepicker();
+  });
+</script>
+
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/user/home' %>
+        <%= menu_item "All Rooms", 'all_rooms'  %>
+        <%= menu_item "Reserve a Room","search_room_form" %>
+        <%= menu_item "My Reservations","my_reservations" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+
+<br><br>
+
+<h2> Reserve a Room</h2>
+
+<form method='get' action = '/search'>
+  <div class="row" style="background-color:transparent;">
+    <div class="col-md-6 col-md-offset-3" style="margin-left:20%;margin-right:20%;float:left;width:60%;background-color:transparent;">
+      <font size="3"><strong>Building Name:</strong></font><br> <select name="building" id="building">
+      <option value="James B. Hunt Jr. Library">James B. Hunt Jr. Library</option>
+      <option value="D. H. Hill Library">D. H. Hill Library</option>
+    </select>
+      <br><br><br>
+      <font size="3"><strong>Booking Date:</strong></font><br> <input type="date" id="txtDate" name="booking_date"/>
+
+      <br><br><br>
+      <font size="3"><strong>Size of the Room:</strong></font><br> <select name="size" id="size">
+      <option value="4 Chairs (Small)">4 Chairs (Small)</option>
+      <option value="6 Chairs (Medium)">6 Chairs (Medium)</option>
+      <option value="8 Chairs (Large)">8 Chairs (Large)</option>
+    </select><br><br>
+      <br>
+      <font size="3"><strong>Start Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Time:</strong></font><br>
+
+      <input type="number" name="start" id="start" min="0" max="23" style="width:30%;">
+      &nbsp;&nbsp;<h7><strong></strong> <input type="number" name="end" id="end" min="1" max="24" style="width:30%">
+
+      <br><br><br>
+      <div>
+        <button class="btn btn-primary" >Search for Available Rooms</button>
+      </div>
+</form>
+<br><br>
+<%= link_to 'Back', '/user/home' %>
+</div>
+</div>

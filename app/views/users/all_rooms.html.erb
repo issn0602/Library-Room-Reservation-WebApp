@@ -1,0 +1,57 @@
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/user/home' %>
+        <%= menu_item "All Rooms", 'all_rooms'  %>
+        <%= menu_item "Reserve a Room","search_room_form" %>
+        <%= menu_item "My Reservations","my_reservations" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+
+
+<br><br>
+
+<h2>Manage Rooms</h2><br>
+
+
+<table class="table table-bordered table-striped displays" id="roomtable">
+  <thead>
+  <tr>
+    <th>Building</th>
+    <th>Number</th>
+    <th>Size</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.building %></td>
+        <td><%= room.number %></td>
+        <td><%= room.size %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', '/user/home' %>
+
+<script>
+  $(document).ready(function() {
+    $('#roomtable').dataTable();
+  });
+</script>

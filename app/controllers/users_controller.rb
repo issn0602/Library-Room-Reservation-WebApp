@@ -19,6 +19,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def all_rooms
+    @rooms = Room.all
+  end
+
+
+  def my_reservations
+    @currentReservations = Reservation.all.select {|y| y.booking_date > Date.today and y.user_id == current_user.id and y.status == 'booked'} + Reservation.all.select { |y| y.user_id == current_user.id and y.status == 'booked' and y.booking_date == Date.today and y.start_time > Time.now.hour.to_s() }
+    @pastReservations = Reservation.all.select {|y| y.booking_date < Date.today and y.user_id == current_user.id} + Reservation.all.select {|y| y.user_id == current_user.id and y.booking_date == Date.today and y.start_time < Time.now.hour.to_s() }
+  end
+
   # POST /users
   # POST /users.json
   def create_user

@@ -24,6 +24,9 @@ LibraryRoomReservation::Application.routes.draw do
   patch '/profile/:id', to: 'users#update_profile'
 
   get 'user/home'  => 'reservations#home'
+  get 'user/all_rooms' => 'users#all_rooms'
+  get 'user/search_room_form' => 'users#search_room_form'
+  get 'user/my_reservations' => 'users#my_reservations'
   get 'admin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
   post '/reserve' => 'reservations#create'

@@ -27,6 +27,7 @@ LibraryRoomReservation::Application.routes.draw do
   get 'user/all_rooms' => 'users#all_rooms'
   get 'user/search_room_form' => 'users#search_room_form'
   get 'user/my_reservations' => 'users#my_reservations'
+  get 'admin/manage_reservations' => 'reservations#index'
   get 'admin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
   post '/reserve' => 'reservations#create'

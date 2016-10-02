@@ -12,8 +12,8 @@ crossorigin="anonymous"></script>
         <%= menu_item "Home", '/admin/home' %>
         <%= menu_item "Manage Users/Admins" , "/users/" %>
         <%= menu_item "Manage Rooms", "/rooms/" %>
-        <%= menu_item "Search Rooms" %>
-        <%= menu_item "My Bookings" %>
+        <%= menu_item "Reserve for Member", "reserve_room_for_user" %>
+        <%= menu_item "Manage Reservations", "manage_reservations" %>
     <% end %>
 
     <%= menu_group pull: :right do %>

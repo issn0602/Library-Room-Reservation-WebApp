@@ -1,24 +1,50 @@
-<div class="row" style="background-color:transparent;">
-<div class="col-md-6 col-md-offset-3" style="margin-left:10%;margin-right:10%;float:left;width:80%;text-align:center;background-color:transoarent;">
-<h1>My Reservations</h1>
 
-<table>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/admin/home' %>
+        <%= menu_item "Manage Users/Admins" , "/users/" %>
+        <%= menu_item "Manage Rooms", "/rooms/" %>
+        <%= menu_item "Reserve for Member", "reserve_room_for_user" %>
+        <%= menu_item "Manage Reservations", "manage_reservations" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+
+
+
+<br><br>
+
+<h2>Manage Reservations</h2><br>
+
+<table class="table table-bordered table-striped displays" id="roomtable">
   <thead>
-    <tr>
-      <th>Booking date</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Status</th>
-      <th>Room</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Booking date</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Status</th>
+    <th>Room</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @reservations.each do |reservation| %>
+  <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.booking_date %></td>
         <td><%= reservation.start_time %></td>
@@ -30,12 +56,19 @@
         <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
         <td><%= link_to 'Release','/reservations/release/'+reservation.id.to_s  %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Reservation', new_reservation_path %>
-  </div>
+<%= link_to 'New Reservation', new_reservation_path %> |
+<%= link_to 'Back', '/admin/home' %>
 </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#roomtable').dataTable();
+  });
+</script>

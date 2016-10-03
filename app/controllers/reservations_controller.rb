@@ -13,14 +13,15 @@ class ReservationsController < ApplicationController
   end
 
   def search
-    @rooms = Room.all
-    #@rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}
-=begin
-   @rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}.each do |x|
-     Reservation.all.select {|y| x.id == y.room_id  and y.status !='booked' and y.booking_date ==params[:booking_date] and y.start_time == params[:start_time] and y.end_time == params[:end_time]}
-      end
-=end
-    end
+   # @rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}
+    x = params[:booking_date].split("/").to_a
+    dateField = Date.new(x[2].to_i,x[0].to_i,x[1].to_i)
+
+    bookedReservations = Reservation.select("room_id").where("booking_date == :booking_date AND start_time == :start_time AND end_time == :end_time AND status == :status",{ booking_date: dateField ,start_time: params[:start], end_time: params[:end],status:'booked'})
+
+    @rooms = Room.where("building == :building AND size == :size", {building: params[:building], size: params[:size]}).where.not(id: bookedReservations)
+
+  end
 
 
   def reserve

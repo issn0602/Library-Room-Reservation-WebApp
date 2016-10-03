@@ -8,9 +8,9 @@
 <%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
     <%= menu_group do %>
         <%= menu_item "Home", '/user/home' %>
-        <%= menu_item "All Rooms", 'all_rooms'  %>
-        <%= menu_item "Reserve a Room","search_room_form" %>
-        <%= menu_item "My Reservations","my_reservations" %>
+        <%= menu_item "All Rooms", 'user/all_rooms'  %>
+        <%= menu_item "Reserve a Room","user/search_room_form" %>
+        <%= menu_item "My Reservations","user/my_reservations" %>
     <% end %>
 
     <%= menu_group pull: :right do %>

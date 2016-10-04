@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :js, only: :destroy_users
   before_action :set_user, only:[:edit]
   #before_action :correct_user,only: [:edit, :update]
 
@@ -73,9 +74,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Handle a successful update.
-      flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to @user, notice: 'profile for ' + @user.name + ' has been updated. :-)'
     else
       render 'edit'
     end
@@ -84,10 +83,7 @@ class UsersController < ApplicationController
   def update_profile
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Handle a successful update.
-      flash[:success] = "Profile updated"
-      redirect_to '/' + @user.role + '/home'
-      #redirect_to '/'+ @user.role +'/home'
+      redirect_to '/user/home', notice: 'profile for ' + @user.name + ' has been updated. :-)'
     else
       render 'edit_profile'
     end
@@ -96,14 +92,15 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-
+    @user = User.find(current_user)
     if params[:id] == current_user.id.to_s
-      redirect_to '/users/', :notice => "Cant delete Yourself!"
+      redirect_to @user, notice: 'Cant delete Yourself!'
     elsif User.find(params[:id]).role == 'sadmin'
-      redirect_to '/users/', :notice => "Cant delete Sadmin!"
+      redirect_to @user, notice: "Cant delete Sadmin!"
     else
+      @temp = User.find(params[:id])
       User.find(params[:id]).destroy!
-      redirect_to '/users/', :notice => "User has been deleted!"
+      redirect_to @user, notice:  @temp.name + " has been deleted!"
     end
   end
 

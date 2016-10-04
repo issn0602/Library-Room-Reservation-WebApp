@@ -21,5 +21,6 @@ module LibraryRoomReservation
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
     I18n.config.enforce_available_locales = true
+    config.assets.initialize_on_precompile = false
   end
 end

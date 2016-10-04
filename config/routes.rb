@@ -28,6 +28,7 @@ LibraryRoomReservation::Application.routes.draw do
   get 'user/search_room_form' => 'users#search_room_form'
   get 'user/my_reservations' => 'users#my_reservations'
   get 'admin/manage_reservations' => 'reservations#index'
+  get 'user/rooms/:id' => 'rooms#show_user'
   get 'admin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
   post '/reserve' => 'reservations#create'
@@ -37,6 +38,8 @@ LibraryRoomReservation::Application.routes.draw do
   get 'rooms/destroy/:id' => 'rooms#destroy'
   get 'users/destroy/:id' => 'users#destroy'
 
+
+  #get 'admin/reserve_room_for_user' => 'admin/reserve_room_for_user'
   #root 'reservations#new'
   root 'sessions#new'
 

@@ -5,7 +5,7 @@
 <script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
 
-<<%= nav_bar fixed: :top, responsive: true do %>
+<%= nav_bar fixed: :top, responsive: true do %>
     <%= menu_group do %>
         <%= menu_item "My Reservations", '/user/home' %>
         <%= menu_item "All Rooms", 'all_rooms'  %>
@@ -19,40 +19,49 @@
 
 <% end %>
 
+<br>
+<h2>Information for <%= @room.number %> </h2>
 
-<br><br>
+<p>
+  <strong>Building:</strong>
+  <%= @room.building %>
+</p>
 
-<h2>Manage Rooms</h2><br>
+<p>
+  <strong>Size:</strong>
+  <%= @room.size %>
+</p>
+<br>
+<h2>Schedule</h2>
+<br>
 
 
-<table class="table table-bordered table-striped displays" id="roomtable">
+<table class="table table-striped table-bordered" id="roomschedule">
   <thead>
   <tr>
-    <th>Building</th>
-    <th>Number</th>
-    <th>Size</th>
-    <th></th>
+    <th>Date</th>
+    <th>Time Slot</th>
+    <th>Reservee</th>
   </tr>
   </thead>
 
   <tbody>
-  <% @rooms.each do |room| %>
+  <% @room_history.each do |history| %>
       <tr>
-        <td><%= room.building %></td>
-        <td><%= room.number %></td>
-        <td><%= room.size %></td>
-        <td><%= link_to 'Show Details / Schedule', '/user/rooms/'+room.id.to_s %></td>
+        <td><%= history.booking_date %></td>
+        <td><%= history.start_time.to_s + ' to ' + history.end_time.to_s %></td>
+        <td><%= User.find(history.user_id).name %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'Back', '/user/home' %>
+<%= link_to 'Back', '../all_rooms' %>
+
 
 <script>
   $(document).ready(function() {
-    $('#roomtable').dataTable();
+    $('#roomschedule').dataTable();
   });
 </script>

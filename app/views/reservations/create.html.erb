@@ -1,1 +1,23 @@
-<h1>Create Reservation</h1>
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/admin/home' %>
+        <%= menu_item "Manage Users/Admins" , "/users/" %>
+        <%= menu_item "Manage Rooms", "/rooms/" %>
+        <%= menu_item "Reserve for Member", "reserve_room_for_user" %>
+        <%= menu_item "Manage Reservations", "manage_reservations" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+
+
+
+<br><br>
+
+<h2>Reservation Created</h2><br>
+
+<%= link_to 'Back' , '/user/home' %>

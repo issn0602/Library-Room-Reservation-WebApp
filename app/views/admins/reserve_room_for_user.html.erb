@@ -1,0 +1,32 @@
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  
+  <script>
+  $(function() {
+    $( "#txtDate" ).datepicker();
+  });
+</script>
+s
+<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", '/admin/home' %>
+        <%= menu_item "Manage Users/Admins" , "/users/" %>
+        <%= menu_item "Manage Rooms", "/rooms/" %>
+        <%= menu_item "Reserve for Member", "reserve_room_for_user" %>
+        <%= menu_item "Manage Reservations", "manage_reservations" %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+

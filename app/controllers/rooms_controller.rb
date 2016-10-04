@@ -13,6 +13,11 @@ class RoomsController < ApplicationController
    @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i}
   end
 
+  def show_user
+    @room = Room.find(params[:id].to_i)
+    @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i and y.booking_date == Date.today}
+  end
+
   # GET /rooms/new
   def new
     @room = Room.new

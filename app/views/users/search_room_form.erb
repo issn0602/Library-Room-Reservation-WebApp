@@ -13,12 +13,11 @@
   });
 </script>
 
-<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+<%= nav_bar fixed: :top, responsive: true do %>
     <%= menu_group do %>
-        <%= menu_item "Home", '/user/home' %>
-        <%= menu_item "All Rooms", 'all_rooms'  %>
-        <%= menu_item "Reserve a Room","search_room_form" %>
-        <%= menu_item "My Reservations","my_reservations" %>
+        <%= menu_item "My Reservations", '/user/home' %>
+        <%= menu_item "All Rooms", '/user/all_rooms'  %>
+        <%= menu_item "Search / Reserve a Room","/user/search_room_form" %>
     <% end %>
 
     <%= menu_group pull: :right do %>

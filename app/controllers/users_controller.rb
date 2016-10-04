@@ -96,8 +96,15 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    User.find(params[:id]).destroy!
-    redirect_to '/users/', :notice => "User has been deleted!"
+
+    if params[:id] == current_user.id.to_s
+      redirect_to '/users/', :notice => "Cant delete Yourself!"
+    elsif User.find(params[:id]).role == 'sadmin'
+      redirect_to '/users/', :notice => "Cant delete Sadmin!"
+    else
+      User.find(params[:id]).destroy!
+      redirect_to '/users/', :notice => "User has been deleted!"
+    end
   end
 
   private

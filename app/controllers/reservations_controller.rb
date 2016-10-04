@@ -23,12 +23,32 @@ class ReservationsController < ApplicationController
 
   end
 
+  def search_user
+    # @rooms = Room.all.select { |y| y.building ==params[:building] and y.size ==params[:size]}
+    x = params[:booking_date].split("/").to_a
+    dateField = Date.new(x[2].to_i,x[0].to_i,x[1].to_i)
+
+    bookedReservations = Reservation.select("room_id").where("booking_date == :booking_date AND start_time == :start_time AND end_time == :end_time AND status == :status",{ booking_date: dateField ,start_time: params[:start], end_time: params[:end],status:'booked'})
+
+    @rooms = Room.where("building == :building AND size == :size", {building: params[:building], size: params[:size]}).where.not(id: bookedReservations)
+
+  end
+
 
   def reserve
 
     #plz check if still available
     @reservation = params[:reservation]
     @reservation.user_id = current_user.id
+    @reservation.save
+    redirect_to '/'+ User.find(current_user.id).role.to_s + '/home'
+  end
+
+
+  def reserve_user
+
+    #plz check if still available
+    @reservation = params[:reservation]
     @reservation.save
     redirect_to '/'+ User.find(current_user.id).role.to_s + '/home'
   end
@@ -79,7 +99,12 @@ class ReservationsController < ApplicationController
     new_params[:end_time] = params[:reservation][:end_time]
     new_params[:status] = 'booked'
     new_params[:room_id] = params[:room]
-    new_params[:user_id] = current_user.id
+
+    if User.find(current_user.id).role == 'user'
+        new_params[:user_id] = current_user.id
+    else
+       new_params[:user_id] = params[:reservation][:user_id]
+    end
 
     puts new_params.to_s
     @reservation = Reservation.new(new_params)

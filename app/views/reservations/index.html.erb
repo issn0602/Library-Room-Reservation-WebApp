@@ -50,8 +50,8 @@
         <td><%= reservation.start_time %></td>
         <td><%= reservation.end_time %></td>
         <td><%= reservation.status %></td>
-        <td><%= reservation.room_id %></td>
-        <td><%= reservation.user_id %></td>
+        <td><%= Room.find(reservation.room_id).number %></td>
+        <td><%= User.find(reservation.user_id).name %></td>
         <td><%= link_to 'Show', reservation %></td>
         <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
         <td><%= link_to 'Release','/reservations/release/'+reservation.id.to_s  %></td>

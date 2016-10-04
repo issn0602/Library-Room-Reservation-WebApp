@@ -31,9 +31,13 @@ LibraryRoomReservation::Application.routes.draw do
   get 'user/rooms/:id' => 'rooms#show_user'
   get 'admin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
+  get '/search_for_user' => 'reservations#search_user'
+
   post '/reserve' => 'reservations#create'
+
   #get '/reserve' => 'reservations#reserve'
   get 'reservation/release/:id' => 'reservations#release'
+  get 'admin/reserve_room_for_user' => 'admins#reserve_room_for_user'
 
   get 'rooms/destroy/:id' => 'rooms#destroy'
   get 'users/destroy/:id' => 'users#destroy'

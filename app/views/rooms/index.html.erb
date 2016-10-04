@@ -5,13 +5,12 @@
 <script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
 
-<%= nav_bar fixed: :top, brand: 'NCSU Libraries', responsive: true do %>
+<%= nav_bar fixed: :top, responsive: true do %>
     <%= menu_group do %>
-        <%= menu_item "Home", '/admin/home' %>
+        <%= menu_item "Manage Reservations", '/admin/home' %>
         <%= menu_item "Manage Users/Admins" , "/users/" %>
         <%= menu_item "Manage Rooms", "/rooms/" %>
-        <%= menu_item "Search Rooms" %>
-        <%= menu_item "My Bookings" %>
+        <%= menu_item "Reserve for Member", "../admin/reserve_room_for_user" %>
     <% end %>
 
     <%= menu_group pull: :right do %>
@@ -45,7 +44,7 @@
         <td><%= room.size %></td>
         <td><%= link_to 'Show Details / History', room %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', '/rooms/destroy/'+room.id.to_s %></td>
+        <td><%= link_to 'Delete', '/rooms/destroy/'+room.id.to_s %></td>
 
       </tr>
     <% end %>

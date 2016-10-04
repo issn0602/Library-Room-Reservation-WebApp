@@ -1,8 +1,27 @@
-<div class="row" style="background-color:transparent;">
-  <div class="col-md-6 col-md-offset-3" style="margin-left:40%;border: 2px solid black; padding: 10px 10px 10px 10px; border-radius: 5px; margin-right:40%;float:left;width:20%;background-color:   transparent ;">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
-    <font size="3"><p id="notice" style="font-weight: bold;"><%= notice %></font></p>
+<%= nav_bar fixed: :top, responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Manage Reservations", '/admin/home' %>
+        <%= menu_item "Manage Users/Admins" , "/users/" %>
+        <%= menu_item "Manage Rooms", "/rooms/" %>
+        <%= menu_item "Reserve for Member", "../admin/reserve_room_for_user" %>
+    <% end %>
 
+    <%= menu_group pull: :right do %>
+        <%= menu_item "Edit Profile", "/profile/"+ current_user.id.to_s %>
+        <%= menu_item "Log Out", "/logout" %>
+    <% end %>
+
+<% end %>
+
+<br><br>
+
+<h2>Profile Details</h2><br><br>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -12,13 +31,47 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-    <p>
+
+<p>
       <strong>Role:</strong>
       <%= @user.role %>
-    </p>
+</p>
+
+<br><br>
+<h2>Reservation History</h2>
+
+<table class="table table-bordered table-striped" id="current">
+  <thead>
+  <tr>
+    <th>Booking date</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Room</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @reservation_history.each do |reservation| %>
+      <tr>
+        <td><%= reservation.booking_date %></td>
+        <td><%= reservation.start_time %></td>
+        <td><%= reservation.end_time %></td>
+        <td><%= Room.find(reservation.room_id).number %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', '/users' %>
     </div>
   </div>
+
+<script>
+  $(document).ready(function() {
+    $('#current').dataTable();
+  });
+</script>

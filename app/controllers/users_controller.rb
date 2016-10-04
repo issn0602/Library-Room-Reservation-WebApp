@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @reservation_history = Reservation.all.select{|y| y.user_id == params[:id].to_i and y.status == 'booked'}
   end
 
   # GET /users/new

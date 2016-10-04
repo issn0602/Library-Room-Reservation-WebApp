@@ -10,12 +10,14 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
-   @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i}
+   @room_schedule = Reservation.all.select {|y| y.room_id == params[:id].to_i and y.booking_date == Date.today and y.status == 'booked'}
+    @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i}
+
   end
 
   def show_user
     @room = Room.find(params[:id].to_i)
-    @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i and y.booking_date == Date.today}
+    @room_history = Reservation.all.select {|y| y.room_id == params[:id].to_i and y.booking_date == Date.today and y.status == 'booked'}
   end
 
   # GET /rooms/new

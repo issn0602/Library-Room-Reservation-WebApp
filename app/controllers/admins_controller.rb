@@ -18,11 +18,15 @@ class AdminsController < ApplicationController
   end
 
   def home
-   @reservation=Reservation.all.select {|y| y.booking_date == Date.today and y.status == 'booked'}
+   @reservations=Reservation.all
   end
 
   # GET /admins/1/edit
   def edit
+  end
+
+  def reserve_room_for_user
+    @users = User.all.select{|y| y.role == 'user'}
   end
 
   # POST /admins

@@ -17,9 +17,9 @@ class ReservationsController < ApplicationController
     x = params[:booking_date].split("/").to_a
     dateField = Date.new(x[2].to_i,x[0].to_i,x[1].to_i)
 
-    bookedReservations = Reservation.select("room_id").where("cast(booking_date as date) == :booking_date AND cast(start_time as text) == :start_time AND cast(end_time as text) == :end_time AND cast(status as text) == :status",{ booking_date: dateField ,start_time: params[:start], end_time: params[:end],status:'booked'})
+    bookedReservations = Reservation.select("room_id").where("cast(booking_date as date) = :booking_date AND cast(start_time as text) = :start_time AND cast(end_time as text) = :end_time AND cast(status as text) = :status",{ booking_date: dateField ,start_time: params[:start], end_time: params[:end],status:'booked'})
 
-    @rooms = Room.where("cast(building as text) == :building AND cast(size as text) == :size", {building: params[:building], size: params[:size]}).where.not(id: bookedReservations)
+    @rooms = Room.where("cast(building as text) = :building AND cast(size as text) = :size", {building: params[:building], size: params[:size]}).where.not(id: bookedReservations)
 
   end
 
@@ -28,9 +28,9 @@ class ReservationsController < ApplicationController
     x = params[:booking_date].split("/").to_a
     dateField = Date.new(x[2].to_i,x[0].to_i,x[1].to_i)
 
-    bookedReservations = Reservation.select("room_id").where("cast(booking_date as date) == :booking_date AND cast(start_time as text) == :start_time AND cast(end_time as text) == :end_time AND cast(status as text) == :status",{ booking_date: dateField ,start_time: params[:start], end_time: params[:end],status:'booked'})
+    bookedReservations = Reservation.select("room_id").where("cast(booking_date as date) = :booking_date AND cast(start_time as text) = :start_time AND cast(end_time as text) = :end_time AND cast(status as text) = :status",{ booking_date: dateField ,start_time: params[:start], end_time: params[:end],status:'booked'})
 
-    @rooms = Room.where("cast(building as text)  == :building AND cast(size as text)  == :size", {building: params[:building], size: params[:size]}).where.not(id: bookedReservations)
+    @rooms = Room.where("cast(building as text)  = :building AND cast(size as text)  = :size", {building: params[:building], size: params[:size]}).where.not(id: bookedReservations)
 
   end
 

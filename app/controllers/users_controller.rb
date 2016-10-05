@@ -95,13 +95,13 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(current_user)
     if params[:id] == current_user.id.to_s
-      redirect_to @user, notice: 'Cant delete Yourself!'
+      redirect_to '/users', notice: 'Cant delete Yourself!'
     elsif User.find(params[:id]).role == 'sadmin'
-      redirect_to @user, notice: "Cant delete Sadmin!"
+      redirect_to '/users', notice: "Cant delete Sadmin!"
     else
       @temp = User.find(params[:id])
       User.find(params[:id]).destroy!
-      redirect_to @user, notice:  @temp.name + " has been deleted!"
+      redirect_to '/users', notice:  @temp.name + " has been deleted!"
     end
   end
 

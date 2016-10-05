@@ -59,7 +59,7 @@ class ReservationsController < ApplicationController
     @reservation.status= 'released'
 
     @reservation.save
-    redirect_to @reservation
+    redirect_to '/'+ User.find(current_user.id).role.to_s + '/home', notice: " Reservation has been Released!"
 
   end
 

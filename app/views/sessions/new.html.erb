@@ -1,5 +1,5 @@
 <% provide(:title, "Log in") %>
-<center><img href="\login" src="..\assets\logo.gif" style="width:100px;height:100px;"\></center><br>
+<center><%= image_tag "logo.gif", id:"logo" %></center>
 <center><h1>Log In</h1></center>
 
 <div class="row" style="background-color:transparent;">
@@ -18,3 +18,8 @@
     <p><center><font size="3"><%= link_to "New to NCSU? Sign up!", signup_path %></font></center></p>
   </div>
 </div>
+
+<style>
+  #logo { width: 100px; height: 100px; text-align: center;}
+
+</style>

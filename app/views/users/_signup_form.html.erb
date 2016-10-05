@@ -1,4 +1,4 @@
-<center><img href="\login" src="..\assets\logo.gif" style="width:100px;height:100px;"\></center><br>
+<center><%= image_tag "logo.gif", id:"logo" %></center>
 <center><h1>Sign Up</h1></center><br>
 <%= form_for(@user, url: signup_path) do |f| %>
   <% if @user.errors.any? %>
@@ -34,3 +34,7 @@
   <% end %>
   <p><center><font size="3"><%= link_to "Existing Member? Login", login_path %></font></center></p>
   </div></div>
+<style>
+  #logo { width: 100px; height: 100px; text-align: center;}
+
+</style>

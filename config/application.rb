@@ -22,5 +22,6 @@ module LibraryRoomReservation
     config.i18n.enforce_available_locales = true
     I18n.config.enforce_available_locales = true
     config.assets.initialize_on_precompile = false
+    config.serve_static_assets = true
   end
 end

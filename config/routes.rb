@@ -30,6 +30,7 @@ LibraryRoomReservation::Application.routes.draw do
   get 'admin/manage_reservations' => 'reservations#index'
   get 'user/rooms/:id' => 'rooms#show_user'
   get 'admin/home'  => 'admins#home'
+  get 'sadmin/home'  => 'admins#home'
   get '/search'  => 'reservations#search'
   get '/search_for_user' => 'reservations#search_user'
 

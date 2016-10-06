@@ -1,11 +1,12 @@
 require 'test_helper'
 
 class RoomsControllerTest < ActionController::TestCase
+
   setup do
     @room = rooms(:one)
   end
 
-  test "should get index" do
+  test "should get room index" do
     get :home
     assert_response :success
     assert_not_nil assigns(:rooms)
@@ -20,7 +21,6 @@ class RoomsControllerTest < ActionController::TestCase
     assert_difference('Room.count') do
       post :create, room: { booking_date: @room.booking_date, name: @room.name, size: @room.size, status: @room.status, time_slot: @room.time_slot }
     end
-
     assert_redirected_to room_path(assigns(:room))
   end
 
@@ -43,7 +43,7 @@ class RoomsControllerTest < ActionController::TestCase
     assert_difference('Room.count', -1) do
       delete :destroy, id: @room
     end
-
     assert_redirected_to rooms_path
   end
+
 end

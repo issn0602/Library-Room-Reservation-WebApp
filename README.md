@@ -24,13 +24,13 @@
 
                                              
                                              Landing page of the app :
-
+                                             
 1. Accepts the email id and password from the existing user and takes the user to the user home page.
 2. Signup : Takes the new user to the signup page.
     
 
-                                    Super Admin Functionality :
-
+                                             Super Admin Functionality :
+                                             
 1. The home page ( also Manage Reservations tab on the header bar ) lists all the reservations in the system.
 
 a. The show functionality redirects to a new page where the details of the reservation are present.
@@ -130,3 +130,39 @@ iii. The page redirects to a new view that displays the confirmation of the rese
 5. The Edit Profile tab redirects to a page where the admin can change his/her name, email id and password.
 
 6. The Logout tab signs out the admin from the system.
+
+
+                                            Library Member Functionality :
+
+1. The home page ( also My Reservations tab on the header bar ) lists all the reservations of the user sorted as past and current.
+
+a. The release functionality allows the user to release any reservation that is current ( updates the reservation as released ).
+
+
+2. The All Rooms tabs redirects to a table that lists all the rooms.
+
+a. The Show Details/Schedule functionality redirects to a new page where the details and reservations of the room are present.
+
+3. The Search / Reserve Rooms tabs redirects to a new page :
+
+a. The user can select any building from the Select Building drop dow.
+
+b. The user can select any date ( in the next 7 days ) from the date bar in the under Booking Date.
+
+c. The user can select the room size from the Select size of Room drop down.
+
+d. The user can add the start and end time for the reservation in the respective text boses ( reservations have to be within 2 hours of duration ).
+
+e. Once the user adds all the details and presses the Search for Availlable Rooms button :
+
+i. The page redirects and a new tab titled Availlable Rooms is present with a drop down containing all the rooms that match the criterion.
+
+ii. Choose a room and press the Reserve button.
+
+iii. The page redirects to a new view that displays the confirmation of the reservation.
+
+5. The Edit Profile tab redirects to a page where the user can change his/her name, email id and password.
+
+6. The Logout tab signs out the user from the system.
+
+----------------------------------------------------------------------------------------------------------------------------

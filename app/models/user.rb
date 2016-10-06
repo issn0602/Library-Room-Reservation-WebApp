@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  has_many :reservations
+  has_many :reservations,:dependent => :destroy
 
 
   validates :password, :confirmation => true

@@ -1,6 +1,6 @@
 class Room < ActiveRecord::Base
 
-  has_many :reservations
+  has_many :reservations,:dependent => :destroy
 
   validates :number, :presence => true, length: { maximum: 140 }
   validates :size, :presence => true
